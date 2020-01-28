@@ -4,10 +4,12 @@ const works = require('./serverWorks.js');
 const fs = require('fs');
 //
 const app = express();
+const port = process.env.PORT || 5000;
+console.log(port);
 
 
 //
-app.set('view engine', 'hbs'); 
+app.set('view engine', 'hbs');
 
 //MIDDLEWares
 app.use((req, res, next) => {
@@ -23,9 +25,9 @@ app.use((req, res, next) => {
   next();
 });
 //
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 //REGISTERING partials
 hbs.registerPartials(__dirname + '/views/partials');
@@ -49,4 +51,6 @@ app.get('/about', (req, res) => {
   res.render('about.hbs', works.mustacheTemp);
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`server is up on port: ${port}`);
+});

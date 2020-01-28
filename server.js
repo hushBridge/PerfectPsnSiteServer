@@ -7,7 +7,7 @@ const app = express();
 
 
 //
-app.set('view engine', 'hbs');
+app.set('view engine', 'hbs'); 
 
 //MIDDLEWares
 app.use((req, res, next) => {

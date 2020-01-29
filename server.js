@@ -4,7 +4,7 @@ const works = require('./serverWorks.js');
 const fs = require('fs');
 //
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;//shrouded-crag-20875
 console.log(port);
 
 
@@ -14,7 +14,7 @@ app.set('view engine', 'hbs');
 //MIDDLEWares
 app.use((req, res, next) => {
   var now = new Date().toString();
-  var logInfo = `requestDate: ${now}-- methodUsed: ${req.method} -- visitedURL: ${req.url}`;
+  var logInfo = `:${now} :${req.method} : ${req.url} byUser: ${req.headers["user-agent"]}`;
 
   fs.appendFile('server.log', logInfo + '\n', (err) => {
     if(err){
